@@ -161,6 +161,11 @@ func _process(delta: float) -> void:
 			get_node("/root").add_child(charSelect)
 			queue_free()
 			
+		elif layer == 2:
+			layer = 1
+			$Background/Player1Controls.texture = load("res://menus/characterSelect/player1Controls.png")
+			state = 0
+			hue = false
 			
 	elif Input.is_action_just_pressed("attack 1"):
 		if state == 12:
@@ -173,7 +178,7 @@ func _process(delta: float) -> void:
 				
 		elif layer == 1:
 			if state == 11:
-				player1Character = randf_range(0, 10)
+				player1Character = floor(randf_range(0, 10.99))
 			else:
 				player1Character = state
 			player1Hue = hue
@@ -184,10 +189,11 @@ func _process(delta: float) -> void:
 				layer = 2
 				state = 0
 				hue = false
+				$Background/Player1Controls.texture = load("res://menus/characterSelect/player2Controls.png")
 				changeSprite()
 		elif layer == 2:
 			if state == 11:
-				player2Character = randf_range(0, 10)
+				player2Character = floor(randf_range(0, 10.99))
 			else:
 				player2Character = state
 			player2Hue = hue
@@ -197,10 +203,12 @@ func _process(delta: float) -> void:
 				
 			var goToLevel = load("res://Scenes/Levels/Level_01.tscn").instantiate()
 			get_node("/root").add_child(goToLevel)
+			get_node("/root/level/CharacterData").stageID = floor(randf_range(0, 5.99))
 			get_node("/root/level/Player").characterID = player1Character
 			get_node("/root/level/Player2").characterID = player2Character
 			get_node("/root/level/Player2").player = player2
 			get_node("/root/level/CharacterData").player1Hue = player1Hue
+			get_node("/root/level/CharacterData").player2Hue = player2Hue
 			get_node("/root/level/CharacterData").player2Hue = player2Hue
 			
 			
@@ -231,6 +239,7 @@ func changeSprite():
 		else:
 			if player2 == "cpu":
 				$Background/Cpu.texture = load("res://menus/characterSelect/cpus.png")
+				$"Background/0".texture = load("res://menus/characterSelect/blank.png")
 			else:
 				$Background/Cpu.texture = load("res://menus/characterSelect/2ps.png")
 				
