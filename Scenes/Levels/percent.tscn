@@ -1,0 +1,245 @@
+[gd_scene load_steps=12 format=3 uid="uid://dk7mxf5sxvm5a"]
+
+[ext_resource type="Script" uid="uid://bmtea6lriu8si" path="res://Scenes/Levels/percent.gd" id="1_ro72f"]
+[ext_resource type="Texture2D" uid="uid://45h6whxalg51" path="res://characters/2bro/bg.png" id="1_uiyhn"]
+[ext_resource type="Texture2D" uid="uid://dl5k0rbkvdcbo" path="res://characters/2bro/icon.png" id="2_ra7gy"]
+[ext_resource type="FontFile" uid="uid://cioappi7i5c24" path="res://Assets/Fonts/Paulo Bittencourt - Regular.ttf" id="3_ra7gy"]
+[ext_resource type="Texture2D" uid="uid://cuf1wdjqsk3nv" path="res://Assets/title.png" id="4_7vsvf"]
+
+[sub_resource type="Theme" id="Theme_7vsvf"]
+
+[sub_resource type="Animation" id="Animation_ro72f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bg/Icon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bg/Icon2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bg/Icon3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_bjwb1"]
+resource_name = "2"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bg/Icon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bg/Icon2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bg/Icon3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_vum14"]
+resource_name = "3"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bg/Icon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bg/Icon2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bg/Icon3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_5u8l4"]
+resource_name = "1"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Bg/Icon:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Bg/Icon2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Bg/Icon3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8hdxm"]
+_data = {
+&"1": SubResource("Animation_5u8l4"),
+&"2": SubResource("Animation_bjwb1"),
+&"3": SubResource("Animation_vum14"),
+&"RESET": SubResource("Animation_ro72f")
+}
+
+[node name="Percent" type="Node2D"]
+script = ExtResource("1_ro72f")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(76, 37)
+texture = ExtResource("1_uiyhn")
+
+[node name="Icon" type="Sprite2D" parent="Bg"]
+position = Vector2(481, -253)
+texture = ExtResource("2_ra7gy")
+
+[node name="Icon2" type="Sprite2D" parent="Bg"]
+position = Vector2(75, -244)
+texture = ExtResource("2_ra7gy")
+
+[node name="Icon3" type="Sprite2D" parent="Bg"]
+position = Vector2(-315, -235)
+texture = ExtResource("2_ra7gy")
+
+[node name="text" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(-29.9254, 721.128)
+
+[node name="label" type="RichTextLabel" parent="text"]
+anchors_preset = -1
+anchor_left = -1674.0
+anchor_right = 295.0
+anchor_bottom = 943.0
+offset_left = 1456.93
+offset_top = -770.128
+offset_right = 1456.93
+offset_bottom = -770.128
+theme = SubResource("Theme_7vsvf")
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_ra7gy")
+theme_override_font_sizes/normal_font_size = 500
+bbcode_enabled = true
+text = "999%"
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Sprite2D" parent="."]
+position = Vector2(310, 10)
+scale = Vector2(0.37016, 0.370159)
+texture = ExtResource("4_7vsvf")
+
+[node name="text" type="Sprite2D" parent="Title"]
+z_index = 20
+position = Vector2(-1847.85, -794.252)
+
+[node name="label" type="RichTextLabel" parent="Title/text"]
+anchors_preset = -1
+anchor_left = -1674.0
+anchor_right = 295.0
+anchor_bottom = 943.0
+offset_left = 1456.93
+offset_top = -770.128
+offset_right = 1456.93
+offset_bottom = -770.128
+theme = SubResource("Theme_7vsvf")
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_ra7gy")
+theme_override_font_sizes/normal_font_size = 500
+bbcode_enabled = true
+text = "999%"
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8hdxm")
+}
+speed_scale = 5.0

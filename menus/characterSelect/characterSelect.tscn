@@ -1,0 +1,195 @@
+[gd_scene load_steps=16 format=3 uid="uid://dln4stf043umm"]
+
+[ext_resource type="Texture2D" uid="uid://d24mif0wrtgga" path="res://menus/characterSelect/background.png" id="1_7qpo2"]
+[ext_resource type="Script" uid="uid://1qg6a6bt6vnc" path="res://menus/characterSelect/character_select.gd" id="1_rs5ev"]
+[ext_resource type="Texture2D" uid="uid://dhl7ef1d1e8my" path="res://menus/characterSelect/0.png" id="2_ht25o"]
+[ext_resource type="FontFile" uid="uid://cioappi7i5c24" path="res://Assets/Fonts/Paulo Bittencourt - Regular.ttf" id="3_ht25o"]
+[ext_resource type="Texture2D" uid="uid://jaegp53ccc7w" path="res://Assets/Spritesheet/platformPack_tilesheet.png" id="5_lski7"]
+[ext_resource type="PackedScene" uid="uid://w7m6tehvvy3g" path="res://Scenes/Prefabs/player.tscn" id="6_vmyul"]
+[ext_resource type="PackedScene" uid="uid://l4lvd6gxuvy8" path="res://Scenes/characterData.tscn" id="7_kytuf"]
+[ext_resource type="Texture2D" uid="uid://dney51xd6he7x" path="res://menus/characterSelect/player1Controls.png" id="8_6sgrl"]
+[ext_resource type="Texture2D" uid="uid://dnhhvmivhcy7f" path="res://menus/mainMenu/fade.png" id="8_weomu"]
+[ext_resource type="Texture2D" uid="uid://dq4jq4dyns2ta" path="res://menus/characterSelect/cpu.png" id="9_0f3x8"]
+
+[sub_resource type="Theme" id="Theme_rs5ev"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vmyul"]
+texture = ExtResource("5_lski7")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, 32, 32, 32, -32, -32, -32)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 16, -32, 16)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 0, -32, 0)
+4:0/0 = 0
+4:1/0 = 0
+5:0/0 = 0
+5:1/0 = 0
+2:5/0 = 0
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_kytuf"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_vmyul")
+
+[sub_resource type="Animation" id="Animation_6sgrl"]
+resource_name = "fadeIn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../fadein:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../fadein:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cw0m1"]
+_data = {
+&"fadeIn": SubResource("Animation_6sgrl")
+}
+
+[node name="CharacterSelect" type="Node2D"]
+script = ExtResource("1_rs5ev")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(574.477, 322.125)
+scale = Vector2(0.626397, 0.603376)
+texture = ExtResource("1_7qpo2")
+
+[node name="0" type="Sprite2D" parent="Background"]
+position = Vector2(37.5525, 32.9396)
+scale = Vector2(1.02121, 1.06018)
+texture = ExtResource("2_ht25o")
+
+[node name="credits" type="Sprite2D" parent="Background"]
+z_index = 20
+position = Vector2(-964.888, 661.284)
+scale = Vector2(1.59643, 1.65734)
+
+[node name="description" type="RichTextLabel" parent="Background/credits"]
+anchors_preset = -1
+anchor_left = -1694.85
+anchor_top = 465.256
+anchor_right = -925.851
+anchor_bottom = 671.256
+offset_left = 2060.85
+offset_top = -731.256
+offset_right = 2060.85
+offset_bottom = -731.256
+theme = SubResource("Theme_rs5ev")
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_ht25o")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "There is no one to bring back this brave little robot if he falls, so he doesn’t plan on it!"
+metadata/_edit_use_anchors_ = true
+
+[node name="charName" type="RichTextLabel" parent="Background/credits"]
+anchors_preset = -1
+anchor_left = -1694.78
+anchor_top = 465.384
+anchor_right = -1471.78
+anchor_bottom = 626.384
+offset_left = 2132.78
+offset_top = -1049.38
+offset_right = 2132.78
+offset_bottom = -1049.38
+theme = SubResource("Theme_rs5ev")
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_ht25o")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "2Br0"
+metadata/_edit_use_anchors_ = true
+
+[node name="label" type="RichTextLabel" parent="Background/credits"]
+anchors_preset = -1
+anchor_left = -1673.93
+anchor_top = 0.127991
+anchor_right = -952.925
+anchor_bottom = 111.128
+offset_left = 2089.93
+offset_top = -707.128
+offset_right = 2090.93
+offset_bottom = -707.128
+theme = SubResource("Theme_rs5ev")
+theme_override_colors/font_selected_color = Color(1, 1, 1, 1)
+theme_override_fonts/normal_font = ExtResource("3_ht25o")
+theme_override_font_sizes/normal_font_size = 70
+bbcode_enabled = true
+text = "~Choose your character~"
+metadata/_edit_use_anchors_ = true
+
+[node name="Level" type="Node2D" parent="Background"]
+z_index = -200
+position = Vector2(-297.698, -419.514)
+scale = Vector2(1.02121, 1.06018)
+
+[node name="Ground" type="TileMap" parent="Background/Level" groups=["Ground"]]
+position = Vector2(45, 80)
+scale = Vector2(0.918777, 0.918777)
+tile_set = SubResource("TileSet_kytuf")
+format = 2
+layer_0/tile_data = PackedInt32Array(655364, 196608, 0, 655363, 196608, 0, 655373, 196608, 0, 655370, 196608, 0, 655371, 196608, 0, 655372, 196608, 0, 655365, 196608, 0, 655366, 196608, 0, 655367, 196608, 0, 655368, 196608, 0, 655369, 196608, 0, 655374, 196608, 0, 589839, 0, 0, 589838, 0, 0, 589837, 0, 0, 589836, 0, 0, 589835, 0, 0, 589834, 0, 0, 589833, 0, 0, 589832, 0, 0, 589831, 0, 0, 589830, 0, 0, 589829, 0, 0, 589828, 0, 0, 589827, 0, 0, 589826, 0, 0, 720899, 196608, 0, 720900, 196608, 0, 720901, 196608, 0, 720902, 196608, 0, 720903, 196608, 0, 720904, 196608, 0, 720905, 196608, 0, 720906, 196608, 0, 720907, 196608, 0, 720908, 196608, 0, 720909, 196608, 0, 720910, 196608, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524290, 0, 0, 655362, 196608, 0, 720898, 196608, 0, 655375, 196608, 0, 720911, 196608, 0, -196607, 0, 0, -131071, 0, 0, -65535, 0, 0, 1, 0, 0, 65537, 0, 0, 131073, 0, 0, 196609, 0, 0, 262145, 0, 0, 327681, 0, 0, 393217, 0, 0, 458753, 0, 0, 524289, 0, 0, 589825, 0, 0, 655361, 0, 0, -196592, 0, 0, -131056, 0, 0, -65520, 0, 0, 16, 0, 0, 65552, 0, 0, 131088, 0, 0, 196624, 0, 0, 262160, 0, 0, 327696, 0, 0, 393232, 0, 0, 458768, 0, 0, 524304, 0, 0, 589840, 0, 0, 655376, 0, 0, 720912, 0, 0)
+
+[node name="wallessGround" type="TileMap" parent="Background/Level" groups=["Ground"]]
+position = Vector2(45, 80)
+scale = Vector2(0.918777, 0.918777)
+tile_set = SubResource("TileSet_kytuf")
+format = 2
+layer_0/tile_data = PackedInt32Array(655364, 196608, 0, 655363, 196608, 0, 655373, 196608, 0, 655370, 196608, 0, 655371, 196608, 0, 655372, 196608, 0, 655365, 196608, 0, 655366, 196608, 0, 655367, 196608, 0, 655368, 196608, 0, 655369, 196608, 0, 655374, 196608, 0, 589839, 0, 0, 589838, 0, 0, 589837, 0, 0, 589836, 0, 0, 589835, 0, 0, 589834, 0, 0, 589833, 0, 0, 589832, 0, 0, 589831, 0, 0, 589830, 0, 0, 589829, 0, 0, 589828, 0, 0, 589827, 0, 0, 589826, 0, 0, 720899, 196608, 0, 720900, 196608, 0, 720901, 196608, 0, 720902, 196608, 0, 720903, 196608, 0, 720904, 196608, 0, 720905, 196608, 0, 720906, 196608, 0, 720907, 196608, 0, 720908, 196608, 0, 720909, 196608, 0, 720910, 196608, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524290, 0, 0, 655362, 196608, 0, 720898, 196608, 0, 655375, 196608, 0, 720911, 196608, 0)
+
+[node name="SpawnPoint" type="Marker2D" parent="Background/Level"]
+unique_name_in_owner = true
+position = Vector2(584, -156)
+
+[node name="Player" parent="Background" instance=ExtResource("6_vmyul")]
+position = Vector2(225.932, 42.8837)
+scale = Vector2(-2.5, 2.5)
+player = "none"
+
+[node name="CharacterData" parent="Background" instance=ExtResource("7_kytuf")]
+mode = "select"
+
+[node name="Player1Controls" type="Sprite2D" parent="Background"]
+visible = false
+position = Vector2(300.964, 74.3732)
+scale = Vector2(0.827336, 0.827336)
+texture = ExtResource("8_6sgrl")
+
+[node name="Cpu" type="Sprite2D" parent="Background"]
+position = Vector2(47.1314, 42.8837)
+texture = ExtResource("9_0f3x8")
+
+[node name="fadein" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+z_index = 20
+position = Vector2(500, 196)
+scale = Vector2(402.342, 246.55)
+texture = ExtResource("8_weomu")
+
+[node name="fadeIn" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Background")
+libraries = {
+&"": SubResource("AnimationLibrary_cw0m1")
+}
+autoplay = "fadeIn"

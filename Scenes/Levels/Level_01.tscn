@@ -1,0 +1,420 @@
+[gd_scene load_steps=15 format=3 uid="uid://cjanwm3sy2x37"]
+
+[ext_resource type="PackedScene" uid="uid://w7m6tehvvy3g" path="res://Scenes/Prefabs/player.tscn" id="2_pay8t"]
+[ext_resource type="Texture2D" uid="uid://jaegp53ccc7w" path="res://Assets/Spritesheet/platformPack_tilesheet.png" id="5_wqbaa"]
+[ext_resource type="PackedScene" uid="uid://l4lvd6gxuvy8" path="res://Scenes/characterData.tscn" id="6_6q1ru"]
+[ext_resource type="PackedScene" uid="uid://dk7mxf5sxvm5a" path="res://Scenes/Levels/percent.tscn" id="6_ok5ke"]
+[ext_resource type="Texture2D" uid="uid://hlsrwcgg3wt" path="res://backgrounds/Cathedral_levelB.png" id="7_ok5ke"]
+[ext_resource type="Texture2D" uid="uid://dpcfuxcdbkqwx" path="res://backgrounds/Cathedral_level.png" id="8_gw1is"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gw1is"]
+texture = ExtResource("5_wqbaa")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, 32, 32, 32, 32, -32, -32, -32)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 16, -32, 16)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 0, -32, 0)
+4:0/0 = 0
+4:1/0 = 0
+5:0/0 = 0
+5:1/0 = 0
+2:5/0 = 0
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="TileSet" id="TileSet_ywwrl"]
+tile_size = Vector2i(64, 64)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_gw1is")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6q1ru"]
+size = Vector2(129, 2134)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ok5ke"]
+size = Vector2(1894, 234)
+
+[sub_resource type="Animation" id="Animation_gw1is"]
+resource_name = "levelDefault"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Level/Ground:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pillarsLeft1:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(170, 275)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pillarsLeft2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(170, 275)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pillarsRight1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(959, 293)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pillarsRight2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(959, 293)]
+}
+
+[sub_resource type="Animation" id="Animation_3cagf"]
+resource_name = "pillarFade"
+length = 0.9
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pillars:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.423529), Color(1, 1, 1, 0.662745), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("pillarsLeft1:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("pillarsLeft2:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pillarsRight1:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("pillarsRight2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Level/Ground:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Level/wallessGround:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("pillarsLeft1:monitoring")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("pillarsLeft2:monitoring")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("pillarsRight1:monitoring")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("pillarsRight2:monitoring")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Level/Ground:layer_0/enabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5vjlm"]
+_data = {
+&"levelDefault": SubResource("Animation_gw1is"),
+&"pillarFade": SubResource("Animation_3cagf")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gw1is"]
+size = Vector2(44, 662)
+
+[node name="level" type="Node2D"]
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." instance=ExtResource("2_pay8t")]
+z_index = 1
+position = Vector2(320, 391)
+gravity = 17.0
+
+[node name="Player2" parent="." instance=ExtResource("2_pay8t")]
+z_index = 1
+position = Vector2(794, 402)
+scale = Vector2(-1, 1)
+gravity = 17.0
+player = "two"
+
+[node name="Level" type="Node2D" parent="."]
+z_index = -200
+
+[node name="Ground" type="TileMap" parent="Level" groups=["Ground"]]
+position = Vector2(45, 80)
+scale = Vector2(0.918777, 0.918777)
+tile_set = SubResource("TileSet_ywwrl")
+format = 2
+layer_0/tile_data = PackedInt32Array(655364, 196608, 0, 655363, 196608, 0, 655373, 196608, 0, 655370, 196608, 0, 655371, 196608, 0, 655372, 196608, 0, 655365, 196608, 0, 655366, 196608, 0, 655367, 196608, 0, 655368, 196608, 0, 655369, 196608, 0, 655374, 196608, 0, 589839, 0, 0, 589838, 0, 0, 589837, 0, 0, 589836, 0, 0, 589835, 0, 0, 589834, 0, 0, 589833, 0, 0, 589832, 0, 0, 589831, 0, 0, 589830, 0, 0, 589829, 0, 0, 589828, 0, 0, 589827, 0, 0, 589826, 0, 0, 720899, 196608, 0, 720900, 196608, 0, 720901, 196608, 0, 720902, 196608, 0, 720903, 196608, 0, 720904, 196608, 0, 720905, 196608, 0, 720906, 196608, 0, 720907, 196608, 0, 720908, 196608, 0, 720909, 196608, 0, 720910, 196608, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524290, 0, 0, 655362, 196608, 0, 720898, 196608, 0, 655375, 196608, 0, 720911, 196608, 0, -196607, 0, 0, -131071, 0, 0, -65535, 0, 0, 1, 0, 0, 65537, 0, 0, 131073, 0, 0, 196609, 0, 0, 262145, 0, 0, 327681, 0, 0, 393217, 0, 0, 458753, 0, 0, 524289, 0, 0, 589825, 0, 0, 655361, 0, 0, -196592, 0, 0, -131056, 0, 0, -65520, 0, 0, 16, 0, 0, 65552, 0, 0, 131088, 0, 0, 196624, 0, 0, 262160, 0, 0, 327696, 0, 0, 393232, 0, 0, 458768, 0, 0, 524304, 0, 0, 589840, 0, 0, 655376, 0, 0, 720912, 0, 0)
+
+[node name="wallessGround" type="TileMap" parent="Level" groups=["Ground"]]
+position = Vector2(45, 80)
+scale = Vector2(0.918777, 0.918777)
+tile_set = SubResource("TileSet_ywwrl")
+format = 2
+layer_0/tile_data = PackedInt32Array(655364, 196608, 0, 655363, 196608, 0, 655373, 196608, 0, 655370, 196608, 0, 655371, 196608, 0, 655372, 196608, 0, 655365, 196608, 0, 655366, 196608, 0, 655367, 196608, 0, 655368, 196608, 0, 655369, 196608, 0, 655374, 196608, 0, 589839, 0, 0, 589838, 0, 0, 589837, 0, 0, 589836, 0, 0, 589835, 0, 0, 589834, 0, 0, 589833, 0, 0, 589832, 0, 0, 589831, 0, 0, 589830, 0, 0, 589829, 0, 0, 589828, 0, 0, 589827, 0, 0, 589826, 0, 0, 720899, 196608, 0, 720900, 196608, 0, 720901, 196608, 0, 720902, 196608, 0, 720903, 196608, 0, 720904, 196608, 0, 720905, 196608, 0, 720906, 196608, 0, 720907, 196608, 0, 720908, 196608, 0, 720909, 196608, 0, 720910, 196608, 0, 524291, 0, 0, 524292, 0, 0, 524293, 0, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 0, 0, 524299, 0, 0, 524300, 0, 0, 524301, 0, 0, 524302, 0, 0, 524303, 0, 0, 524290, 0, 0, 655362, 196608, 0, 720898, 196608, 0, 655375, 196608, 0, 720911, 196608, 0)
+
+[node name="SpawnPoint" type="Marker2D" parent="Level"]
+unique_name_in_owner = true
+position = Vector2(584, -156)
+
+[node name="CharacterData" parent="." instance=ExtResource("6_6q1ru")]
+
+[node name="blastZone1" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blastZone1"]
+position = Vector2(-266, 366)
+shape = SubResource("RectangleShape2D_6q1ru")
+debug_color = Color(0.908542, 0.000118402, 0.736373, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="blastZone1"]
+position = Vector2(1432, 55)
+shape = SubResource("RectangleShape2D_6q1ru")
+debug_color = Color(0.908542, 0.000118402, 0.736373, 0.42)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="blastZone1"]
+position = Vector2(611, -738)
+shape = SubResource("RectangleShape2D_ok5ke")
+debug_color = Color(0.832344, 0.00137153, 0.940184, 0.42)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="blastZone1"]
+position = Vector2(564, 1177)
+shape = SubResource("RectangleShape2D_ok5ke")
+debug_color = Color(0.832344, 0.00137153, 0.940184, 0.42)
+
+[node name="blastZone2" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="blastZone2"]
+position = Vector2(-266, 366)
+shape = SubResource("RectangleShape2D_6q1ru")
+debug_color = Color(0.908542, 0.000118402, 0.736373, 0.42)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="blastZone2"]
+position = Vector2(1432, 55)
+shape = SubResource("RectangleShape2D_6q1ru")
+debug_color = Color(0.908542, 0.000118402, 0.736373, 0.42)
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="blastZone2"]
+position = Vector2(611, -738)
+shape = SubResource("RectangleShape2D_ok5ke")
+debug_color = Color(0.832344, 0.00137153, 0.940184, 0.42)
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="blastZone2"]
+position = Vector2(564, 1177)
+shape = SubResource("RectangleShape2D_ok5ke")
+debug_color = Color(0.832344, 0.00137153, 0.940184, 0.42)
+
+[node name="pillars" type="Sprite2D" parent="."]
+z_index = -10
+position = Vector2(575, 336)
+scale = Vector2(0.625371, 0.625371)
+texture = ExtResource("7_ok5ke")
+
+[node name="noPillars" type="Sprite2D" parent="pillars"]
+z_index = -1
+texture = ExtResource("8_gw1is")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_5vjlm")
+}
+
+[node name="pillarsLeft1" type="Area2D" parent="."]
+position = Vector2(170, 275)
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pillarsLeft1"]
+position = Vector2(12, 53)
+shape = SubResource("RectangleShape2D_gw1is")
+
+[node name="pillarsLeft2" type="Area2D" parent="."]
+position = Vector2(170, 275)
+collision_layer = 0
+collision_mask = 32
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pillarsLeft2"]
+position = Vector2(12, 53)
+shape = SubResource("RectangleShape2D_gw1is")
+
+[node name="pillarsRight1" type="Area2D" parent="."]
+position = Vector2(959, 293)
+collision_layer = 0
+collision_mask = 16
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pillarsRight1"]
+position = Vector2(12, 53)
+shape = SubResource("RectangleShape2D_gw1is")
+
+[node name="pillarsRight2" type="Area2D" parent="."]
+position = Vector2(959, 293)
+collision_layer = 0
+collision_mask = 32
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pillarsRight2"]
+position = Vector2(12, 53)
+shape = SubResource("RectangleShape2D_gw1is")
+
+[node name="percentMeters" type="Sprite2D" parent="."]
+z_index = 20
+position = Vector2(-29.9254, 721.128)
+
+[node name="player1Percent" parent="percentMeters" instance=ExtResource("6_ok5ke")]
+position = Vector2(136.925, -625.128)
+scale = Vector2(0.1, 0.1)
+
+[node name="player2Percent" parent="percentMeters" instance=ExtResource("6_ok5ke")]
+position = Vector2(1062.93, -625.128)
+scale = Vector2(0.1, 0.1)
+
+[connection signal="doKnockback" from="Player" to="Player2" method="_on_player_do_knockback"]
+[connection signal="doKnockback" from="Player2" to="Player" method="_on_player_2_do_knockback"]
+[connection signal="area_entered" from="blastZone1" to="Player" method="_on_blast_zone_1_area_entered"]
+[connection signal="area_entered" from="blastZone2" to="Player2" method="_on_blast_zone_2_area_entered"]
+[connection signal="area_entered" from="pillarsLeft1" to="Player" method="_on_pillars_left_1_area_entered"]
+[connection signal="area_entered" from="pillarsLeft2" to="Player2" method="_on_pillars_left_2_area_entered"]
+[connection signal="area_entered" from="pillarsRight1" to="Player" method="_on_pillars_right_1_area_entered"]
+[connection signal="area_entered" from="pillarsRight2" to="Player2" method="_on_pillars_right_2_area_entered"]
